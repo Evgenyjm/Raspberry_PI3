@@ -1,0 +1,138 @@
+<!--
+   index.html
+   
+-->
+
+<html>
+  <head>
+    <title>PiCamControl</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type=text/javascript>
+	    $(function() {
+	      $('a#leftdv').bind('click', function() {
+		$.getJSON('/leftsbtn',
+		    function(data) {
+		  //do nothing
+		});
+		return false;
+	      });
+	      $('a#rightdv').bind('click', function() {
+		$.getJSON('/rightsbtn',
+		    function(data) {
+		  //do nothing
+		});
+		return false;
+	      });
+	      $('a#topsrv').bind('click', function() {
+		$.getJSON('/topbtn',
+		    function(data) {
+		  //do nothing
+		});
+		return false;
+	      });
+	      $('a#bottomsrv').bind('click', function() {
+		$.getJSON('/bottombtn',
+		    function(data) {
+		  //do nothing
+		});
+		return false;
+	      });
+	      
+	    });
+    </script>
+    <style>
+		body {
+			background: #FFFFFF;
+			color: #999999;
+			padding:1%;
+			font: bold 15px Arial;
+		}
+		p {
+		    text-align: center;
+		    font: bold 20px Arial;
+		    }
+		.content {
+			display: flex;
+			width: 100%;
+		     }
+		.videoblock {
+			width: 60%;
+		     }
+		.parametr {
+			width: 35%;
+			margin-left:5%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+		     }
+		.container {
+			display: flex;
+			flex-direction: column
+		     }
+		.motor {
+			display: flex;
+			justify-content: space-between;
+			width: 90%;
+			margin: 0px auto;
+		     }
+
+		button {
+			font: bold 15px Arial;
+			text-decoration: none;
+			background-color: #C72828;
+			padding: 10px 15px 10px 15px;
+			border: 1px solid #CCCCCC;
+			color: #ffffff;
+			cursor: pointer;
+			width: 100px;
+			border-radius: 7px;
+			font: 600 15px Arial;
+			text-align: center;
+			transition: 0.3s
+		}
+		button:focus {
+			border: 1px solid #C72828!important;
+			outline: 1px #c72828!important;
+		}
+		button:hover {
+			background-color: #ffffff;
+			color: #C72828;
+			box-shadow: inset 0 0 0 2px #C72828;
+		}
+		a {
+		    margin: 20px 20px;
+		    }
+
+		img{
+			display: display: inline-block
+			width: 100%;
+			-moz-transform: rotate(180deg); /* Для Firefox */
+			-ms-transform: rotate(180deg); /* Для IE */
+			-webkit-transform: rotate(180deg); /* Для Safari, Chrome, iOS */
+			-o-transform: rotate(180deg); /* Для Opera */
+			transform: rotate(180deg);
+		}
+    </style>
+  </head>
+  <body>
+    <h2>PiCam</h2>
+    <div class='content'>
+	<div class='videoblock'>
+	<h3><img src="{{ url_for('video_feed') }}" width="100%"></h3>
+	</div>
+	<div class='parametr'>
+	    <p>Керування камерою</p>
+	    <div class='container'>
+		<form class='motor'>
+		    <a href=# id=topsrv><button class='btn btn-default'>Вгору</button></a>
+		    <a href=# id=bottomsrv><button class='btn btn-default'>Вниз</button></a>
+		</form>
+		<form class='motor'>
+		    <a href=# id=leftdv><button class='btn btn-default'>Ліворуч</button></a>
+		    <a href=# id=rightdv><button class='btn btn-default'>Праворуч</button></a>
+		</form>
+	    </div>
+	</div>
+    </div>
+  </body>
+</html>
